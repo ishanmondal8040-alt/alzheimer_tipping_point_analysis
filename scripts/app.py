@@ -54,10 +54,12 @@ with col2:
     axes[1].set_ylabel("Variance")
     axes[1].legend(loc='upper right')
     
+    # Lag-1 AC1 Plot with proper Y-limit padding
     axes[2].plot(time_points[-len(csd_results['autocorrelation_ac1']):], csd_results['autocorrelation_ac1'], color='#8e44ad', label='Lag-1 AC1')
     axes[2].set_xlabel("Months")
     axes[2].set_ylabel("AC1")
-    axes[2].legend(loc='upper right')
+    axes[2].set_ylim(0.70, 1.12)  # 1.12 পর্যন্ত বাড়ানো হলো যাতে ডানদিকের উপরে লেজেন্ডের জন্য ফাঁকা জায়গা থাকে
+    axes[2].legend(loc='upper right')  # আগের মতো সব কয়টি ডানদিকের উপরে
     
-    plt.tight_layout()
+    fig.tight_layout()
     st.pyplot(fig)
